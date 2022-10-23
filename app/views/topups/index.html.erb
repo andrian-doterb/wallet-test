@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Topups</h1>
+
+<div id="topups">
+  <% @topups.each do |topup| %>
+    <%= render topup %>
+    <p>
+      <%= link_to "Show this topup", topup %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New topup", new_topup_path %>

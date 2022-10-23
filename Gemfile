@@ -77,4 +77,5 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'enumerize', '~> 2.5'
 gem 'rubocop-rails', require: false

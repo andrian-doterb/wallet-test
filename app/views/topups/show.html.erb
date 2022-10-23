@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @topup %>
+
+<div>
+  <%= link_to "Edit this topup", edit_topup_path(@topup) %> |
+  <%= link_to "Back to topups", topups_path %>
+
+  <%= button_to "Destroy this topup", @topup, method: :delete %>
+</div>
