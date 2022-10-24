@@ -64,6 +64,6 @@ class TopupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def topup_params
-    params.require(:topup).permit(:code, :transaction_type, :amount, :stock_id, :sender_id, :receiver_id, :status)
+    params.require(:topup).permit(:amount, :sender_id, :receiver_id)
   end
 end

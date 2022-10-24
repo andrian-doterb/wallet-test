@@ -20,7 +20,6 @@ class WithdrawsController < ApplicationController
   # POST /withdraws or /withdraws.json
   def create
     @withdraw = Withdraw.new(withdraw_params)
-
     respond_to do |format|
       if @withdraw.save
         format.html { redirect_to withdraw_url(@withdraw), notice: 'Withdraw was successfully created.' }
@@ -64,6 +63,6 @@ class WithdrawsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def withdraw_params
-    params.require(:withdraw).permit(:code, :transaction_type, :amount, :stock_id, :sender_id, :receiver_id, :status)
+    params.require(:withdraw).permit(:amount, :sender_id, :receiver_id)
   end
 end

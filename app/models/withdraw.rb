@@ -1,10 +1,14 @@
 class Withdraw < Transaction
-  belongs_to :sender, class_name: 'Account'
-  belongs_to :receiver, class_name: 'Stock'
+  belongs_to :account, class_name: 'Account', foreign_key: 'sender_id'
+  belongs_to :stock, class_name: 'Stock', foreign_key: 'receiver_id'
 
-  before_create :set_transaction_type
+  validate :minimum_withdraw, :check_balance
 
-  def set_transaction_type
-    self.transaction_type = :withdraw
+  def minimum_withdraw
+    errors.add(:amount, 'nominal too low, minimum 50.') if amount < 50
+  end
+
+  def check_balance
+    errors.add(:balance, 'is not enough.') if account.balance < amount
   end
 end

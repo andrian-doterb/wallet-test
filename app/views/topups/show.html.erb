@@ -1,10 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @topup %>
+<div class="card">
+  <div class="card-header">
+    <h1>Topup Detail</h1>
+  </div>
+  <div class="card-body">
 
-<div>
-  <%= link_to "Edit this topup", edit_topup_path(@topup) %> |
-  <%= link_to "Back to topups", topups_path %>
+    <p>
+      <strong>Amount:</strong>
+      <%= @topup.amount %>
+    </p>
 
-  <%= button_to "Destroy this topup", @topup, method: :delete %>
+    <p>
+      <strong>Sender:</strong>
+      <%= @topup.stock.code %>
+    </p>
+
+    <p>
+      <strong>Receiver:</strong>
+      <%= "#{@topup.account.number} - #{@topup.account.customer.full_name}" %>
+    </p>
+
+    <div>
+      <span><%= link_to "Back", topups_path, class: 'btn btn-outline-primary btn-sm' %></span>
+    </div>
+  </div>
 </div>

@@ -8,7 +8,7 @@ puts 'Please be patient on creating dummy data!'
   )
 end
 
-Stock.create(name: 'Top Up 1', code: 'tp01', stock_type: :topup, balance: 3500)
-Stock.create(name: 'Top Up 2', code: 'tp02', stock_type: :topup, balance: 3500)
-Stock.create(name: 'Withdraw 1', code: 'wd01', stock_type: :withdraw, balance: 2000)
+Stock.create(name: 'Topup 1', code: 'topup-1', stock_type: :topup, balance: 10000)
+Stock.create(name: 'Topup 2', code: 'topup-2', stock_type: :topup, balance: 5000)
+Stock.create(name: 'Withdraw 1', code: 'withdraw-1', stock_type: :withdraw, balance: 1000)
 puts 'Success create dummy data!'

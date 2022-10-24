@@ -1,14 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Withdraws</h1>
-
-<div id="withdraws">
-  <% @withdraws.each do |withdraw| %>
-    <%= render withdraw %>
-    <p>
-      <%= link_to "Show this withdraw", withdraw %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Withdraw</h1>
+  <%= link_to "New withdraw", new_withdraw_path, class: 'btn btn-primary btn-md' %>
 </div>
 
-<%= link_to "New withdraw", new_withdraw_path %>
+<div id="withdraws">
+  <%= render 'withdraw' %>
+</div>

@@ -1,7 +1,14 @@
 class Transfer < Transaction
-  before_create :set_transaction_type
+  belongs_to :sender, class_name: 'Account', foreign_key: 'sender_id'
+  belongs_to :receiver, class_name: 'Account', foreign_key: 'receiver_id'
 
-  def set_transaction_type
-    self.transaction_type = 'Transfer'
+  validate :check_balance, :same_account?
+
+  def check_balance
+    errors.add(:balance, "is not enough. remaining balance is #{sender.balance}") if sender.balance < amount
+  end
+
+  def same_account?
+    errors.add(:receiver, 'is the same account') if sender.number == receiver.number
   end
 end

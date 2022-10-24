@@ -1,37 +1,23 @@
-<div id="<%= dom_id transfer %>">
-  <p>
-    <strong>Code:</strong>
-    <%= transfer.code %>
-  </p>
-
-  <p>
-    <strong>Transaction type:</strong>
-    <%= transfer.transaction_type %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= transfer.amount %>
-  </p>
-
-  <p>
-    <strong>Stock:</strong>
-    <%= transfer.stock_id %>
-  </p>
-
-  <p>
-    <strong>Sender:</strong>
-    <%= transfer.sender_id %>
-  </p>
-
-  <p>
-    <strong>Receiver:</strong>
-    <%= transfer.receiver_id %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= transfer.status %>
-  </p>
-
-</div>
+<hr>
+<table class="table"> 
+  <thead>
+    <tr class="text-center">
+      <th scope="col">No</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Sender</th>
+      <th scope="col">Receiver</th>
+      <th scope="col" colspan="6">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @transfers.each_with_index do |transfer, index| %>
+    <tr class="text-center">
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= transfer.amount %></td>
+      <td><%= "#{transfer.sender.number} - #{transfer.sender.customer.full_name}" %></td>
+      <td><%= "#{transfer.receiver.number} - #{transfer.receiver.customer.full_name}" %></td>
+      <td colspan="6"><%= link_to "Show", transfer, class: 'btn btn-secondary btn-sm' %><td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

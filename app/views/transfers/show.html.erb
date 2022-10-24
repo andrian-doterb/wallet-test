@@ -1,10 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @transfer %>
+<div class="card">
+  <div class="card-header">
+    <h1>Transfer Detail</h1>
+  </div>
+  <div class="card-body">
 
-<div>
-  <%= link_to "Edit this transfer", edit_transfer_path(@transfer) %> |
-  <%= link_to "Back to transfers", transfers_path %>
+    <p>
+      <strong>Amount:</strong>
+      <%= @transfer.amount %>
+    </p>
 
-  <%= button_to "Destroy this transfer", @transfer, method: :delete %>
+    <p>
+      <strong>Sender:</strong>
+      <%= "#{@transfer.sender.number} - #{@transfer.sender.customer.full_name}" %>
+    </p>
+
+    <p>
+      <strong>Receiver:</strong>
+      <%= "#{@transfer.receiver.number} - #{@transfer.receiver.customer.full_name}" %>
+    </p>
+
+    <div>
+      <span><%= link_to "Back", transfers_path, class: 'btn btn-outline-primary btn-sm' %></span>
+    </div>
+  </div>
 </div>

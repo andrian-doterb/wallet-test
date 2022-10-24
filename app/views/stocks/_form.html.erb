@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="col-4 form-group mb-3">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="col-4 form-group mb-3">
     <%= form.label :code, style: "display: block" %>
-    <%= form.text_field :code %>
+    <%= form.text_field :code, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
+  <div class="col-4 form-group mb-3">
+    <%= form.label :stock_type, style: "display: block" %>
+    <%= form.select :stock_type, Stock.stock_type.options, {}, { class: "form form-group form-select" } %>
   </div>
 
-  <div>
+  <div class="col-4 form-group mb-3">
     <%= form.label :balance, style: "display: block" %>
-    <%= form.text_field :balance %>
+    <%= form.text_field :balance, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= link_to "Back", stocks_path, class: 'btn btn-outline-primary btn-sm' %>
+    <%= form.submit 'Save', class: 'btn btn-primary btn-sm' %>
   </div>
 <% end %>

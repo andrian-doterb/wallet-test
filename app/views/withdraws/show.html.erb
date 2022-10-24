@@ -1,10 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @withdraw %>
+<div class="card">
+  <div class="card-header">
+    <h1>Withdraw Detail</h1>
+  </div>
+  <div class="card-body">
 
-<div>
-  <%= link_to "Edit this withdraw", edit_withdraw_path(@withdraw) %> |
-  <%= link_to "Back to withdraws", withdraws_path %>
+    <p>
+      <strong>Amount:</strong>
+      <%= @withdraw.amount %>
+    </p>
 
-  <%= button_to "Destroy this withdraw", @withdraw, method: :delete %>
+    <p>
+      <strong>Sender:</strong>
+      <%= @withdraw.stock.code %>
+    </p>
+
+    <p>
+      <strong>Receiver:</strong>
+      <%= "#{@withdraw.account.number} - #{@withdraw.account.customer.full_name}" %>
+    </p>
+
+    <div>
+      <span><%= link_to "Back", withdraws_path, class: 'btn btn-outline-primary btn-sm' %></span>
+    </div>
+  </div>
 </div>

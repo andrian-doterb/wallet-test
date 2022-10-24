@@ -39,22 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_104116) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "code"
-    t.string "transaction_type"
+    t.string "type"
     t.decimal "amount", precision: 8, scale: 2, default: "0.0", null: false
-    t.integer "stock_id"
     t.integer "sender_id"
     t.integer "receiver_id"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_transactions_on_receiver_id"
-    t.index ["sender_id"], name: "index_transactions_on_sender_id"
-    t.index ["stock_id"], name: "index_transactions_on_stock_id"
   end
 
   add_foreign_key "accounts", "customers"
-  add_foreign_key "transactions", "accounts", column: "receiver_id"
-  add_foreign_key "transactions", "accounts", column: "sender_id"
-  add_foreign_key "transactions", "stocks"
 end

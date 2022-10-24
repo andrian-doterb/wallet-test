@@ -1,9 +1,21 @@
 class Transaction < ApplicationRecord
-  extend Enumerize
+  after_create :transaction_calculation
 
-  belongs_to :sender, class_name: 'Account'
-  belongs_to :receiver, class_name: 'Account'
-  belongs_to :stocks
+  def transaction_calculation
+    TransactionServices.new(self).perform
+  end
 
-  enumerize :transaction_type, in: %i[topup transfer withdraw], scope: :shallow
+  def transaction_sender
+    return Stock.find(sender_id).code if type == 'Topup'
+    return Account.find(sender_id).number if type == 'Withdraw'
+
+    Account.find(sender_id).number
+  end
+
+  def transaction_receiver
+    return Account.find(receiver_id).number if type == 'Topup'
+    return Stock.find(receiver_id).code if type == 'Withdraw'
+
+    Account.find(receiver_id).number
+  end
 end
