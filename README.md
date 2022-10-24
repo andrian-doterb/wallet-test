@@ -1,24 +1,13 @@
-# README
+# WALLET APPS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Initial Setup
 
-Things you may want to cover:
+1. bundle install
 
-* Ruby version
+2. bundle exec rails db:migrate
 
-* System dependencies
+3. bundle exec rails db:seeds
 
-* Configuration
+4. bundle exec rails assets:precompile
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Andrian Doterb
